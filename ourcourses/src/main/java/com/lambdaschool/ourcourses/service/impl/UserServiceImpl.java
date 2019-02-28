@@ -1,7 +1,7 @@
 package com.lambdaschool.ourcourses.service.impl;
 
 import com.lambdaschool.ourcourses.model.User;
-import com.lambdaschool.ourcourses.repository.UserDao;
+import com.lambdaschool.ourcourses.repository.Userrepository;
 import com.lambdaschool.ourcourses.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,11 +18,11 @@ public class UserServiceImpl implements UserDetailsService, UserService
 {
 
     @Autowired
-    private UserDao userDao;
+    private Userrepository userrepos;
 
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException
     {
-        User user = userDao.findByUsername(userId);
+        User user = userrepos.findByUsername(userId);
         if (user == null)
         {
             throw new UsernameNotFoundException("Invalid username or password.");
@@ -33,19 +33,19 @@ public class UserServiceImpl implements UserDetailsService, UserService
     public List<User> findAll()
     {
         List<User> list = new ArrayList<>();
-        userDao.findAll().iterator().forEachRemaining(list::add);
+        userrepos.findAll().iterator().forEachRemaining(list::add);
         return list;
     }
 
     @Override
     public void delete(long id)
     {
-        userDao.deleteById(id);
+        userrepos.deleteById(id);
     }
 
     @Override
     public User save(User user)
     {
-        return userDao.save(user);
+        return userrepos.save(user);
     }
 }
