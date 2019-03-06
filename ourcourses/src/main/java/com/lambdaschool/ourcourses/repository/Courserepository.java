@@ -16,4 +16,6 @@ public interface Courserepository extends JpaRepository <Course, Long>
     @Modifying
     @Query(value = "DELETE FROM studcourses WHERE courseid = :courseid", nativeQuery = true)
     void deleteCourseFromStudcourses(long courseid);
+
+
 }

@@ -1,5 +1,6 @@
 package com.lambdaschool.ourcourses.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.lambdaschool.ourcourses.model.Course;
 import com.lambdaschool.ourcourses.repository.Courserepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,13 @@ public class Coursecontroller
 
     @GetMapping("/courses")
     public List<Course> listAllCourses()
+    {
+        return courserepos.findAll();
+    }
+
+    @JsonView(View.CoursesOnly.class)
+    @GetMapping("/courses/nostudents")
+    public List<Course> listAllCoursesNoStudents()
     {
         return courserepos.findAll();
     }

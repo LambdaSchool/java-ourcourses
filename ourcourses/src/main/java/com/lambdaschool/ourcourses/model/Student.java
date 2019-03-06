@@ -27,6 +27,11 @@ public class Student
     {
     }
 
+    public Student(String studname)
+    {
+        this.studname = studname;
+    }
+
     public long getStudid()
     {
         return studid;
