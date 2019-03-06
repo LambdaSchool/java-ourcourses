@@ -1,6 +1,7 @@
 package com.lambdaschool.ourcourses.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.lambdaschool.ourcourses.model.CountStudentInCourses;
 import com.lambdaschool.ourcourses.model.Course;
 import com.lambdaschool.ourcourses.repository.Courserepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,4 +48,9 @@ public class Coursecontroller
     }
 
     //TODO add get for courses plus number of students in course
+    @GetMapping( value = "/courses/studcount")
+    public List<CountStudentInCourses> getCountStudentsInCourses()
+    {
+        return courserepos.getCountStudentsInCourse();
+    }
 }

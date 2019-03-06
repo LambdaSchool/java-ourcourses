@@ -13,7 +13,6 @@ import java.util.Set;
 public class Course
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView(View.CoursesOnly.class)
     private long courseid;
 
